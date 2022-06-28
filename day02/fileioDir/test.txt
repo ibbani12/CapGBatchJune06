@@ -1,6 +1,3 @@
-Hello Bhima1
-Hello Bhima2
-Hello Bhima3
-Hello Bhima4
-Hello Bhima5
-Hello Bhima6
+Bhima1 101 20.3 A
+Bhima2 102 20.3 B
+Bhima3 103 20.3 C
