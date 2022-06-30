@@ -24,7 +24,7 @@ int testMultithreadedBank()
 {
    Bank BankObj;
    std::vector<std::thread> threads;
-   for(int i = 0; i < 7; ++i){
+   for(int i = 0; i < 8; ++i){
 
         threads.push_back(std::thread(&Bank::addMoney, &BankObj, 1000));
    }
@@ -43,7 +43,7 @@ int main()
   int val = 0;
   for(int k = 0; k < 10000; k++)
   {
-     if((val = testMultithreadedBank()) != 7000)
+     if((val = testMultithreadedBank()) != 8000)
      {
        std::cout << "Error at count = "<<k<<" Money in Bank = "<<val << std::endl;
      }
