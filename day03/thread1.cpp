@@ -14,7 +14,7 @@ int main()
 	thread t1(func1); // threads created by function ptrs
 	for(int i=0;i<1000;i++)
 		cout<<"in main i = "<<i<<endl;
-	//t1.join();
+	t1.join();
 	// t1.join();
 	// t1.detach();
 	//t1.detach();
