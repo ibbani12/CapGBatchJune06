@@ -5,8 +5,9 @@ using namespace std;
 
 int main()
 {
-	std::thread t1([]{
-		for(int i=1;i<=10;i++)
+	int x=10;
+	std::thread t1([x]{
+		for(int i=1;i<=x;i++)
 		cout<<3*i<<endl;
 	});
 

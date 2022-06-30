@@ -21,7 +21,7 @@ public:
 	Money() : m(0){}
 	void addMoney(int amt){
 		for(int i=0;i<amt;i++)
-			m=m+i;
+			m++;
 	}
 
 	int getMoney() { return m; }
@@ -35,7 +35,7 @@ int thFunc(){
 	std::vector<std::thread> t;
 	for(int i=0;i<3;i++)
 	{
-		t.push_back(std::thread(&Money::addMoney, &M, 2000));
+		t.push_back(std::thread(&Money::addMoney, &M, 1000));
 	}
 
 	for(int i=0;i<t.size();i++)
