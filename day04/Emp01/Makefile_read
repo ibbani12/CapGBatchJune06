@@ -6,11 +6,11 @@ SRC = src/
 BIN = bin/
 INCLUDE = inc/
 
-all: app1
+all: app_read
 
-app1: $(OBJ)Main_read.o $(OBJ)Employee.o $(OBJ)Person.o
-	$(CC) -o app1 $(OBJ)Main_read.o  $(OBJ)Employee.o $(OBJ)Person.o
-	mv app1 $(BIN) 
+app_read: $(OBJ)Main_read.o $(OBJ)Employee.o $(OBJ)Person.o
+	$(CC) -o app_read $(OBJ)Main_read.o  $(OBJ)Employee.o $(OBJ)Person.o
+	mv app_read $(BIN) 
 
 $(OBJ)Main_read.o: $(SRC)Main_read.cpp
 	$(CC) $(CPPFLAGS) $(SRC)Main_read.cpp -I $(INCLUDE)
@@ -26,7 +26,7 @@ $(OBJ)Person.o: $(SRC)Person.cpp
 
 
 clean:
-	rm -f a.out app1 *.o
+	rm -f a.out app_read *.o
 	rm -f $(OBJ)*.o
-	rm -f $(BIN)app1
+	rm -f $(BIN)app_read
 
