@@ -33,4 +33,5 @@ public:
 	void getEmpDetails();
 	void display();
 	char* getSid();
+	void setSal(int);
 };

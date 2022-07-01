@@ -15,6 +15,8 @@ void Employee::display()
 
 char* Employee::getSid(){ return esid; }
 
+void Employee::setSal(int s) { sal = s;}
+
 void Employee::getEmpDetails()
 {
 	cout<<"\nEnter Employee Details"<<endl;
