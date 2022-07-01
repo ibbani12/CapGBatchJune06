@@ -8,13 +8,13 @@ INCLUDE = inc/
 
 all: app
 
-app: $(OBJ)Main_read.o $(OBJ)Employee.o $(OBJ)Person.o
-	$(CC) -o app $(OBJ)Main_read.o  $(OBJ)Employee.o $(OBJ)Person.o
+app: $(OBJ)Main.o $(OBJ)Employee.o $(OBJ)Person.o
+	$(CC) -o app $(OBJ)Main.o  $(OBJ)Employee.o $(OBJ)Person.o
 	mv app $(BIN) 
 
-$(OBJ)Main_read.o: $(SRC)Main_read.cpp
-	$(CC) $(CPPFLAGS) $(SRC)Main_read.cpp -I $(INCLUDE)
-	mv Main_read.o $(OBJ)
+$(OBJ)Main.o: $(SRC)Main.cpp
+	$(CC) $(CPPFLAGS) $(SRC)Main.cpp -I $(INCLUDE)
+	mv Main.o $(OBJ)
 
 $(OBJ)Employee.o: $(SRC)Employee.cpp
 	$(CC) $(CPPFLAGS) $(SRC)Employee.cpp -I $(INCLUDE)
