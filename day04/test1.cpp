@@ -1,11 +1,12 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 
 using namespace std;
 
 class Employee
 {
-private:
+protected:
 	int id;
 	string name;
 	int sal;
@@ -47,6 +48,17 @@ private:
 public:
 	Manager(){ role = "Supervisor"; }
 	Manager(int i, string n, int s, string r) : Employee(i,n,s) { role = r; }
+	Manager(const Manager &obj){
+		// cout<<"\nCopy Construtor is called"<<endl;
+		// cout<<"\nCopy Cons Name: "<<obj.role;
+		// cout<<"\nCopy Cons ID: "<<obj.id;
+		this->id = obj.id+1;
+		this->name = "defaultName";
+		//this->role = obj.role ;
+		//this->sal = obj.sal+10001;
+
+	}
+
 	string getRole(){ return role; }
 	void setRole(string r){ role = r; }
 	void setValues(int i, string n, int s, string r)
@@ -63,20 +75,46 @@ public:
 		cout<<"\nRole: "<<role<<endl;
 	}
 
+	void operator=(const Manager &obj){
+		this->id = obj.id+1;
+		
+	}
+
 };
 
 
 int main()
 {
 	
-	//Manager M(101, "rahul", 10000,"Director");
-	//M.dispEmp();
-	Manager *M = new Manager[3];
-	M[0].dispManager();
-	M[1].dispManager();
-	M[2].dispManager();
-	M[1].setValues(101, "rahul", 10000,"Director");
-	M[1].dispManager();
+	Manager M1(101, "rahul", 10000,"Director");
+	M1.dispManager();
+
+	//Manager M2 = M1;
+	// //M2.dispManager();
+	// //M2.setValues(102, "rahul1", 10000,"Director1");
+	// Manager M3 = M2;
+	// Manager M4 = M3;
+	// M2.dispManager();
+	// M3.dispManager();
+	// M4.dispManager();
+
+	Manager *M = new Manager[5];
+	M[0] = M1;
+	for(int i=1;i<5;i++)
+	{
+		M[i] = M[i-1];
+	}
+
+	for(int i=0;i<5;i++)
+	{
+		M[i].dispManager();
+	}
+	// Manager *M = new Manager[3];
+	// M[0].dispManager();
+	// M[1].dispManager();
+	// M[2].dispManager();
+	// M[1].setValues(101, "rahul", 10000,"Director");
+	// M[1].dispManager();
 
 
 
