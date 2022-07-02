@@ -24,7 +24,13 @@ public:
 	void setSal(int x){ sal = x; }
 	void setId(int i) { id = i; }
 	void setName(string n){ name =n; }
-
+	void setEmp(int i, string n, int s)
+	{
+		id = i; 
+		name=n; 
+		sal=s; 
+	}
+protected:
 	void dispEmp()
 	{
 		cout<<"\nName: "<<name;
@@ -40,13 +46,21 @@ private:
 	string role;
 public:
 	Manager(){ role = "Supervisor"; }
-	Manager(string r) { role = r; }
+	Manager(int i, string n, int s, string r) : Employee(i,n,s) { role = r; }
 	string getRole(){ return role; }
 	void setRole(string r){ role = r; }
+	void setValues(int i, string n, int s, string r)
+	{
+		setEmp(i,n,s);
+		role = r;
+	}
 
 	void dispManager()
 	{
-		cout<<"\nRole: "<<role;
+		cout<<"\nName: "<<getName();
+		cout<<"\nID: "<<"EMP_"<<getID();
+		cout<<"\nSalary: "<<getSal(); 
+		cout<<"\nRole: "<<role<<endl;
 	}
 
 };
@@ -54,10 +68,15 @@ public:
 
 int main()
 {
-	Employee E(101, "rahul", 10000);
-	Manager M("Director");
-	E.dispEmp();
-	M.dispManager();
+	
+	//Manager M(101, "rahul", 10000,"Director");
+	//M.dispEmp();
+	Manager *M = new Manager[3];
+	M[0].dispManager();
+	M[1].dispManager();
+	M[2].dispManager();
+	M[1].setValues(101, "rahul", 10000,"Director");
+	M[1].dispManager();
 
 
 
