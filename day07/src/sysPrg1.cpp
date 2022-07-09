@@ -14,7 +14,7 @@ int main()
 		sleep(20);
 		cout<<"I am a child, my process pid : "<<getpid()<<endl;
 		cout<<"I am Child, my Parent PID : "<<getppid()<<endl;
-
+		sleep(20);
 
 	}
 	else
