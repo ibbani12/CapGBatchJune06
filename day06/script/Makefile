@@ -1,20 +1,21 @@
 CC = g++
-INC = ../inc
-OBJ = ../obj
-SRC = ../src
-BIN = ../bin
+VL = valgrind
+INC = ./inc
+OBJ = ./obj
+SRC = ./src
+BIN = ./bin
 
 CFLAGS = -c -g -Wall -Werror
 LFLAGS = -o
 IFLAGS = -I$(INC)
-CVFLAGS = -v --tool=memcheck --leak-check=full --show-reachable=yes --log-file=valclient
+CVFLAGS = -v --tool=memcheck --leak-check=full --show-reachable=yes
 
-all: app app2 
+all: $(BIN)/app $(BIN)/app2 $(BIN)/valgrindclient
 
-app: $(OBJ)/test.o
+$(BIN)/app: $(OBJ)/test.o
 	$(CC) $(LFLAGS) $(BIN)/app $(OBJ)/test.o
 
-app2: $(OBJ)/test1.o
+$(BIN)/app2: $(OBJ)/test1.o
 	$(CC) $(LFLAGS) $(BIN)/app2 $(OBJ)/test1.o
 
 
@@ -24,6 +25,10 @@ $(OBJ)/test.o:$(SRC)/test.cpp
 $(OBJ)/test1.o:$(SRC)/test1.cpp
 	$(CC) $(CFLAGS) $(IFLAGS) $(SRC)/test1.cpp -o $(OBJ)/test1.o 
 
+$(BIN)/valgrindclient:
+	sleep 3
+	valgrind --leak-check=full --show-reachable=yes $(BIN)/app > $(BIN)/valgringRpt.txt
+	
 clean:
 	@echo "Cleaning the Project"
 	rm -f $(OBJ)/*.o
