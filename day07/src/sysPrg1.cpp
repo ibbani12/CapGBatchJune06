@@ -8,11 +8,19 @@ int main()
 {
 	int pid;
 	pid = fork();
-	if(pid>0){
-		cout<<"Hello World!"<<endl;
-		cout<<"PID: "<<getpid()<<endl;
-		cout<<"PPID: "<<getppid()<<endl;
-		sleep(10);
+	if(pid==0){
+		sleep(15);
+		cout<<"I am a child, my process pid : "<<getpid()<<endl;
+		cout<<"I am Child, my Parent PID : "<<getppid()<<endl;
+
+
+	}
+	else
+	{
+		cout<<"I am a Parent, my process pid : "<<getpid()<<endl;
+		cout<<"I am Parent, my Parent PID : "<<getppid()<<endl;
+		
+
 	}
 	return 0;
 }
