@@ -8,9 +8,12 @@ int main()
 {
 	if(fork() > 0)
 	{
-		cout<<"\nIam Parent"<<endl;
+
+		cout<<"\nIam Parent PID: "<<getpid()<<endl;
+
 		sleep(50);
 	}
+	
 	
 	return 0;
 }
