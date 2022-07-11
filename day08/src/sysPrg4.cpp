@@ -8,13 +8,14 @@ using namespace std;
 int main()
 {
 	int pid, exitstat, status;
-	int i;
+	//int i;
 	pid = fork();
 	if(pid == 0)
 	{
-		cout<<"Enter the exit status: ";
-		cin>>i;
-		exit(i);
+		// cout<<"Enter the exit status: ";
+		// cin>>i;
+		sleep(50);
+		exit(3);
 	}
 	else
 	{
@@ -26,7 +27,7 @@ int main()
 		{
 			exitstat = (int) status/256;
 			cout<<"\nExit Status from "<<pid<<" was = "<<exitstat<<endl;
-			
+			cout<<"\nStatus: "<<status<<endl;
 		}
 
 	}
