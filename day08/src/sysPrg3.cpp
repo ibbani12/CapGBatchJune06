@@ -14,6 +14,7 @@ int main()
 	pid = fork();
 	if(pid ==0)
 	{
+		
 		cout<<"1st child's PID: "<<getpid()<<endl;
 		cout<<"1st Parent's PID: "<<getppid()<<endl;
 		cout<<"1st child process dead"<<endl;
