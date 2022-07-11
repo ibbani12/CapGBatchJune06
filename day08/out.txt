@@ -1,0 +1,12 @@
+2nd Parent PID: 7528
+2nd Parent's PPID : 4311
+Parent PID: 7528
+Parent's PPID : 4311
+2nd child's PID: 7530
+2nd Parent's PID: 2263
+2nd child process dead
+Parent PID: 7530
+Parent's PPID : 2263
+1st child's PID: 7529
+1st Parent's PID: 2263
+1st child process dead
