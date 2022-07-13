@@ -27,28 +27,45 @@ int main()
 		fs<<"D";
 	fs.close();
 
-	fs.open(fpath, ios::in);
-	if(!fs)
-	{
-		cout<<"Unable to create/open the file"<<endl;
-		exit(0);
-	}
+	
 
 	pid = fork();
 
 	if(pid == 0)
 	{
+		fs.open(fpath, ios::in);
+		if(!fs)
+			{
+				cout<<"Unable to create/open the file"<<endl;
+				exit(0);
+			}
 		while(fs.read(buf, sizeof(buf))){
-			cout<<"Read Buffer: \n"<<buf<<endl;
-			cout<<"File pointer is at Pos: "<<fs.tellg()<<endl;
-		}
 
+		cout<<"Read Buffer(Child Process): \n"<<buf<<endl;
+		cout<<"File pointer is at Pos(Child Process): "<<fs.tellg()<<endl;
+		}
+		fs.close();
+		//sleep(5);
 	}
 	else{
-		wait((int *)0);
+		//sleep(1);
+		fs.open(fpath, ios::in);
+		if(!fs)
+			{
+				cout<<"Unable to create/open the file"<<endl;
+				exit(0);
+			}
+		cout<<"\nInitially File Pointer(Parent Process): "<<fs.tellg()<<endl;
+		while(fs.read(buf, sizeof(buf))){
+
+		cout<<"Read Buffer(Parent Process): \n"<<buf<<endl;
+		cout<<"File pointer is at Pos(Parent Process): "<<fs.tellg()<<endl;
+		}
+
+		fs.close();
 	}
 
-	fs.close();
+	//fs.close();
 
 	return 0;
 }
