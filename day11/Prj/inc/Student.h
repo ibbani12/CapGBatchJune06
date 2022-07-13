@@ -30,4 +30,4 @@ bool searchStd(vector <Student>&, string);
 
 void Write2File(vector<Student>&);
 void ReadFromFile(vector<Student>&);
-bool findNUpdate(vector<Student>&);
+bool findNUpdate(vector<Student>&, int, char*);

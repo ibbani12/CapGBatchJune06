@@ -57,7 +57,7 @@ void ReadFromFile(vector<Student>&vs)
     fs.close();
 }
 
-bool findNUpdate(vector<Student>&vs)
+bool findNUpdate(vector<Student>&vs, int key, char *nName)
 {
 
 	return false;
