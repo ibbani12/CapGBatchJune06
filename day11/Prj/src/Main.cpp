@@ -35,8 +35,20 @@ int main()
 	// for(auto it: vs)
 	// 	it.dispStudent();
 
-	cout<<searchStd(vs,"d")<<endl;
+	//cout<<searchStd(vs,"bhima")<<endl;
+	//cout<<"Sizeof Vector: "<<vs.size()<<endl;
+	size_t sizeVs = vs.size();
 	Write2File(vs);
+	
+	cout<<"\nafter reading from the file student details are\n";
+
+	vector <Student> vs1;
+	vs1.resize(sizeVs);
+	cout<<"Sizeof Vector: "<<vs1.size()<<endl;
+	ReadFromFile(vs1);
+
+	for(it=vs1.begin(); it!=vs1.end();it++)
+	 	it->dispStudent();
 
 	delete []s;
 	return 0;

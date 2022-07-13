@@ -35,6 +35,24 @@ void Write2File(vector<Student>&vs)
 		exit(0);
 	}
 
-	fs.write(reinterpret_cast<const char*>(&vs),sizeof(vs));
+	size_t size = vs.size();
+    fs.write(reinterpret_cast<const char*>(&vs[0]), size*sizeof(Student));
+    
 	fs.close();
+}
+
+void ReadFromFile(vector<Student>&vs)
+{
+	fstream fs;
+	fs.open("Student.dat",ios::in | ios::out);
+	if(!fs)
+	{
+		cout<<"Unable to open the Student's DB"<<endl;
+		exit(0);
+	}
+
+	size_t size = vs.size();
+	fs.read(reinterpret_cast<char*>(&vs[0]), size*sizeof(Student));
+    
+    fs.close();
 }
