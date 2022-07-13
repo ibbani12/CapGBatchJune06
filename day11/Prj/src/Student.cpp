@@ -21,6 +21,20 @@ bool searchStd(vector <Student>& vs, string key)
 	for(it=vs.begin(); it!=vs.end(); it++)
 		if(strcmp(it->getSName(), key.c_str()) == 0)
 			return true;
-	
+
 	return false;
+}
+
+void Write2File(vector<Student>&vs)
+{
+	fstream fs;
+	fs.open("Student.dat",ios::in | ios::out);
+	if(!fs)
+	{
+		cout<<"Unable to open the Student's DB"<<endl;
+		exit(0);
+	}
+
+	fs.write(reinterpret_cast<const char*>(&vs),sizeof(vs));
+	fs.close();
 }

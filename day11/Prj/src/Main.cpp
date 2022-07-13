@@ -36,6 +36,7 @@ int main()
 	// 	it.dispStudent();
 
 	cout<<searchStd(vs,"d")<<endl;
+	Write2File(vs);
 
 	delete []s;
 	return 0;

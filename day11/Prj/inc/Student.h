@@ -27,3 +27,6 @@ public:
 
 
 bool searchStd(vector <Student>&, string);
+
+void Write2File(vector<Student>&);
+void ReadFromFile(vector<Student>&);
