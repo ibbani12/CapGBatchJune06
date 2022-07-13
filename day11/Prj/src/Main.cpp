@@ -51,7 +51,7 @@ int main()
 	 	it->dispStudent();
 
 	char *newKey = "Bhima";
-	key = 7;
+	int key = 7;
 	bool found = findNUpdate(vs1,key,newKey);
 	if(found == true)
 		cout<<"Updated the record"<<endl;
