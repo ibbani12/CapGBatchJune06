@@ -1,8 +1,8 @@
 #!/bin/sh
 
 echo "Creating Directory Structure"
-mkdir day06
-cd day06
+mkdir day11
+cd day11
 mkdir bin obj src inc script
 touch ./script/Makefile
 echo "Done!"
