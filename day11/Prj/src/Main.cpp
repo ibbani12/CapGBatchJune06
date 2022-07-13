@@ -50,6 +50,21 @@ int main()
 	for(it=vs1.begin(); it!=vs1.end();it++)
 	 	it->dispStudent();
 
+	char *newKey = "Bhima"
+	key = 7;
+	bool found = findNUpdate(vs1,key,newKey);
+	if(found == true)
+		cout<<"Updated the record"<<endl;
+	else
+		cout<<"Record not found"<<endl;
+
+	 //Updated records from the file
+	ReadFromFile(vs1);
+
+	for(it=vs1.begin(); it!=vs1.end();it++)
+	 	it->dispStudent();
+
+
 	delete []s;
 	return 0;
 }
