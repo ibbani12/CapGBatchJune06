@@ -28,7 +28,7 @@ bool searchStd(vector <Student>& vs, string key)
 void Write2File(vector<Student>&vs)
 {
 	fstream fs;
-	fs.open("Student.dat",ios::in | ios::out);
+	fs.open("Student.dat",ios::in | ios::out | ios::binary);
 	if(!fs)
 	{
 		cout<<"Unable to open the Student's DB"<<endl;
@@ -44,7 +44,7 @@ void Write2File(vector<Student>&vs)
 void ReadFromFile(vector<Student>&vs)
 {
 	fstream fs;
-	fs.open("Student.dat",ios::in | ios::out);
+	fs.open("Student.dat",ios::in | ios::out | ios::binary);
 	if(!fs)
 	{
 		cout<<"Unable to open the Student's DB"<<endl;
