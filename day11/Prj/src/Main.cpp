@@ -50,7 +50,7 @@ int main()
 	for(it=vs1.begin(); it!=vs1.end();it++)
 	 	it->dispStudent();
 
-	char *newKey = "Bhima"
+	char *newKey = "Bhima";
 	key = 7;
 	bool found = findNUpdate(vs1,key,newKey);
 	if(found == true)
