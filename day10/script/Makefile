@@ -1,6 +1,6 @@
 CC = g++
 LFLAGS = -o
-CFLAGS = -c -g -Wall -Werror
+CFLAGS = -c -g 
 INC = ./inc
 IFLAG = -I$(INC)
 BIN = ./bin
