@@ -57,8 +57,20 @@ void ReadFromFile(vector<Student>&vs)
     fs.close();
 }
 
-bool findNUpdate(vector<Student>&vs, int key, char *nName)
+bool findNUpdate(vector<Student>&vs, int key,const char *nName)
 {
+	int count=1;
+	vector <Student> :: iterator it;
+	for(it=vs.begin(); it!=vs.end(); it++)
+		{
+			if(count==key)
+			{
+				it->setSName(nName);
+				Write2File(vs);
+				return true;
+			}
+			count++;
+		}
 
 	return false;
 }

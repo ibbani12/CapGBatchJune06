@@ -1,5 +1,5 @@
 CC = g++
-CPPFLAGS = -c -Wall -Werror
+CPPFLAGS = -c -Wall -Werror -std=c++11
 LFLAGS = -o
 
 BIN = bin

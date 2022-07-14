@@ -50,9 +50,9 @@ int main()
 	for(it=vs1.begin(); it!=vs1.end();it++)
 	 	it->dispStudent();
 
-	char *newKey = "Bhima";
+	string newKey = "Bhima";
 	int key = 7;
-	bool found = findNUpdate(vs1,key,newKey);
+	bool found = findNUpdate(vs1,key,newKey.c_str());
 	if(found == true)
 		cout<<"Updated the record"<<endl;
 	else
