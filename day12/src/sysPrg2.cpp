@@ -16,6 +16,7 @@ void RegisterSignal()
 	signal(SIGSEGV, signalHandler);
 	signal(SIGTERM, signalHandler);
 	signal(SIGABRT, signalHandler);
+	signal(SIGCHLD, signalHandler);
 }
 
 
@@ -23,6 +24,6 @@ int main()
 {
 	RegisterSignal();
 	for(;;);
-		
+
 	return 0;
 }

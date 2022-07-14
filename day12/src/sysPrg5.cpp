@@ -12,6 +12,7 @@ static void func1(int id)
 	cout<<"\n i = "<<i<<endl;
 	cout<<"Child Died"<<endl;
 	cout<<"ID: "<<id<<endl;
+	signal(SIGCHLD, func1);
 	getchar();
 }
 
@@ -21,14 +22,14 @@ int main()
 	pid = fork();
 	if(pid == 0)
 	{
-		//sleep(1);
+		sleep(1);
 		cout<<"Child"<<endl;
 		
 	}	
 	else
 	{	
 		cout<<"Parent"<<endl;
-		sleep(50);
+		
 		
 		signal(SIGCHLD, func1);
 		for(int i=0;i<10000;i++)
