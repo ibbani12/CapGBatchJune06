@@ -11,14 +11,16 @@ static void func1(int id)
 {
 	cout<<"\n i = "<<i<<endl;
 	cout<<"Child Died"<<endl;
+	wait(NULL);
 	cout<<"ID: "<<id<<endl;
-	signal(SIGCHLD, func1);
-	getchar();
+	
+	
 }
 
 
 int main()
 {
+	signal(SIGCHLD, func1);
 	pid = fork();
 	if(pid == 0)
 	{
@@ -28,12 +30,13 @@ int main()
 	}	
 	else
 	{	
+		
+		
+		int ret;
+		wait(0);
 		cout<<"Parent"<<endl;
-		
-		
-		signal(SIGCHLD, func1);
-		for(int i=0;i<10000;i++)
-			cout<<"i: "<<i<<" ";
+		for(int i=0;i<10000;i++);
+			
 		cout<<"\nParent Dies"<<endl;
 	}
 

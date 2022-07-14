@@ -26,7 +26,7 @@ int main(){
 	}else{
 		printf("Waiting for pid %d\n", pid) ;
 		int ret ;
-		int x = waitpid(pid, &ret, 0) ;
+		int x = waitpid(pid, &ret, 0);
 		printf("wait pid returns %d\n" , x) ;
 	}
 			
