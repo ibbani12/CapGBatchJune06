@@ -22,6 +22,7 @@ int main()
 {
 	signal(SIGCHLD, func1);
 	pid = fork();
+	
 	if(pid == 0)
 	{
 		sleep(1);
@@ -32,7 +33,7 @@ int main()
 	{	
 		
 		
-		int ret;
+		
 		wait(0);
 		cout<<"Parent"<<endl;
 		for(int i=0;i<10000;i++);
