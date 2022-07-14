@@ -1,22 +1,21 @@
 #include <iostream>
-#include <signal.h>
+#include <csignal>
 
 using namespace std;
 
-void* func1();
+void func1(int);
 
 int main()
 {
-	cout<<"\nPress <DEL> key\n"<<endl;
+	cout<<"\nPress CTRL + C key\n"<<endl;
 	signal(SIGINT, func1);
 	for(;;);
 
 	return 0;
 }
 
-
-void* func1()
+void func1(int sigNum)
 {
-	cout<<"Hey Bhima!\nYou have pressed the <DEL> key"<<endl;
-	return ((void *)0);
+	cout<<"Interrupt signal ("<<sigNum<<") received"<<endl;
+	exit(sigNum);
 }
