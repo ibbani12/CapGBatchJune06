@@ -7,7 +7,7 @@ BIN = ./bin
 OBJ = ./obj
 SRC = ./src
 
-all: sysPrg1 sysPrg2 sysPrg3 sysPrg4 sysPrg5
+all: sysPrg1 sysPrg2 sysPrg3 sysPrg4 sysPrg5 sysPrg6
 
 sysPrg1: $(OBJ)/sysPrg1.o
 	$(CC) $(LFLAGS) $(BIN)/sysPrg1 $(OBJ)/sysPrg1.o
@@ -44,6 +44,12 @@ $(OBJ)/sysPrg5.o: $(SRC)/sysPrg5.cpp
 	$(CC) $(CFLAGS) $(IFLAG) $(SRC)/sysPrg5.cpp 
 	mv *.o $(OBJ)
 
+sysPrg6: $(OBJ)/sysPrg6.o
+	$(CC) $(LFLAGS) $(BIN)/sysPrg6 $(OBJ)/sysPrg6.o
+
+$(OBJ)/sysPrg6.o: $(SRC)/sysPrg6.cpp
+	$(CC) $(CFLAGS) $(IFLAG) $(SRC)/sysPrg6.cpp 
+	mv *.o $(OBJ)
 
 clean:
 	@echo "Cleaning is in Progress"
@@ -52,6 +58,7 @@ clean:
 	rm -f $(OBJ)/*.o
 	rm -f $(BIN)/sysPrg1 $(BIN)/sysPrg2 $(BIN)/sysPrg3
 	rm -f $(BIN)/sysPrg4 $(BIN)/sysPrg5
+	rm -f $(BIN)/*
 	@echo "Done!"
 
 
