@@ -51,6 +51,13 @@ $(OBJ)/sysPrg6.o: $(SRC)/sysPrg6.cpp
 	$(CC) $(CFLAGS) $(IFLAG) $(SRC)/sysPrg6.cpp 
 	mv *.o $(OBJ)
 
+sysPrg7: $(OBJ)/sysPrg7.o
+	$(CC) $(LFLAGS) $(BIN)/sysPrg7 $(OBJ)/sysPrg7.o
+
+$(OBJ)/sysPrg7.o: $(SRC)/sysPrg7.cpp
+	$(CC) $(CFLAGS) $(IFLAG) $(SRC)/sysPrg7.cpp 
+	mv *.o $(OBJ)
+
 clean:
 	@echo "Cleaning is in Progress"
 	rm -f a.out sysPrg1

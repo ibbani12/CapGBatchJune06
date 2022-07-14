@@ -16,20 +16,20 @@ void func1(int id)
 int main()
 {
 	int pid;
-	signal(SIGINT, func1);
+	signal(SIGKILL, func1);
 	pid = fork();
 	if(pid ==0)
 	{
 		cout<<"CHILD PID: "<<pid<<endl;
 		//signal(SIGINT, func1);
-		sleep(50);
+		sleep(2);
 	}
 	else
 	{
 		cout<<"PID : "<<pid<<endl;
 
-		kill(pid,SIGINT);
-		sleep(10);
+		kill(pid,SIGKILL);
+		sleep(50);
 		cout<<"\nParent exiting"<<endl;
 	}
 }
