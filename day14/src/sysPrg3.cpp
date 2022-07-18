@@ -16,18 +16,18 @@ int main()
 		perror("fork");
 	else if(pid > 0)   //parent process
 	{
-		close(fd[0]);
-		wait(0);
-		//sleep(20);
-		//write(fd[1], "Hello World\n", 12);
+		close(fd[1]);
+		
+		n = read(fd[0], line, BUFF);
+		cout<<"Printing in parent"<<endl;
+		write(STDOUT_FILENO, line, n);
+		cout<<endl;
 	}
 	else   //child process
 	{
-		close(fd[1]);
-		//sleep(50);
-		n = read(fd[0], line, 20);
-		cout<<"In Child Process"<<endl;
-		write(STDOUT_FILENO, line, n);
+		close(fd[0]);
+		//write(fd[1], "Hello from Child", 16);
+		
 	}
 
 	return 0;
