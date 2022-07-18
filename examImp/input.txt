@@ -1,0 +1,7 @@
+DNS, tcp, 53
+Echo,udp,65536
+DHCP,udp,29900
+UDP,bye,123213
+TFTP, UDP,69
+SNMP, udp, 161
+ftp,tcp, 49153
