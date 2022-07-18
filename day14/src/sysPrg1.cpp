@@ -26,13 +26,14 @@ volatile sig_atomic_t unprocessedSig = 0;
 
 void sigHandler(int sigNum)
 {
-	if (sigNum == SIGINT)
+	if (sigNum == SIGABRT)
 		unprocessedSig = 1;
 }
 
 
 int main()
 {
+	system("clear");
 	cout<<"\nPID : "<<getpid()<<endl;
 
 	struct sigaction act;
@@ -42,10 +43,10 @@ int main()
 	sigfillset(&act.sa_mask);
 	act.sa_flags = SA_RESTART;
 
-	if(sigaction(SIGINT, &act, NULL) == -1)
+	if(sigaction(SIGABRT, &act, NULL) == -1)
 	{
 		perror("sigaction");
-		exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE); //EXIT_SUCCESS
 	}
 
 	//cout<<"\nKill the process using kill -9 pid"<<endl;
@@ -55,11 +56,13 @@ int main()
 	{
 		if(unprocessedSig)
 		{
+			system("ls");
 			unprocessedSig = 0;
 			cout<<"\nSIGINT has occured"<<endl;
 		}
 	}
 
+	
 	return 0;
 
 }
