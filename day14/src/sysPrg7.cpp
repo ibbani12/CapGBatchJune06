@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <unistd.h>
 #include <cstring>
-#define MSGSIZE 4
+#define MSGSIZE 1024
 using namespace std;
 
 
@@ -28,6 +28,7 @@ int main()
 	// }
 
 	int n=0;
+	p[0].seekg(2, p[0].beg);
 	n=read(p[0], inbuf,MSGSIZE);
 	cout<<inbuf<<endl;
 	cout<<"n="<<n<<endl;
