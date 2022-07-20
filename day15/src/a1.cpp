@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	char *fName = argv[1];
+	string line;
 
 	fstream fs;
 	fs.open(fName, ios::out);
@@ -20,7 +21,7 @@ int main(int argc, char *argv[])
 
 	for(int i=0;i<2;i++)
 	{
-		string line;
+		
 		getline(cin, line);
 		fs<<line<<endl;
 	}
@@ -33,9 +34,11 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	string line1;
-	while(getline(fs, line1))
-		cout<<line1<<endl;
+	line ="";
+	while(getline(fs, line)){
+		cout<<line<<endl;
+		line="";
+	}
 	
 
 	return 0;
