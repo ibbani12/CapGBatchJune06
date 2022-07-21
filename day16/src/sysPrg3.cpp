@@ -38,12 +38,12 @@ using namespace std;
 int main()
 {
 	int msgid;
-	msgid = msgget((key_t)123456, 0666 | IPC_CREAT);
+	msgid = msgget((key_t)123456, 0666 | IPC_CREAT | IPC_EXCL );
 	if(msgid == -1)
 	{
 		perror("msgget() error");
 		cout<<"Error No: "<<errno<<endl;
-		if(errno == EACCESS)
+		if(errno == EACCES)
 			cout<<"Access error"<<endl;
 		else if (errno == EEXIST)
 			cout<<"EXISTS"<<endl;
