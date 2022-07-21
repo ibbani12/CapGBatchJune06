@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <signal.h>
 #include <cstring>
@@ -34,6 +33,10 @@ static void func1(int signum)
 			cout<<"SIGNAL HANG UP occured! : "<<signum<<endl;
 			break;
 
+		case SIGCHLD:
+			cout<<"SIGNAL CHILD occured! : "<<signum<<endl;
+			break;
+
 		default:
 			cout<<"\nUnhandled signal : "<<signum<<endl;
 
@@ -41,42 +44,34 @@ static void func1(int signum)
 	
 }
 
-
-void mystrcat(char *str1, char *str2)
-{
-	int i;
-	signal(SIGSEGV,func1);
-	
-	for(i=0;i<strlen(str2);i++)
-		str1[i] = str2[i];
-	str1[i] = '\0';
-}
-
 int main()
 {
 	sighandler_t ret = signal(SIGUSR1,func1);
-	signal(SIGHUP,func1);
+	
 
 	if(ret == SIG_ERR)
 	{
 		perror("signal() error");
 		exit(EXIT_FAILURE);
 	}
-
-	if(raise(SIGUSR1) != 0)
+	int pid = fork();
+	int status;
+	if(pid == 0)
 	{
-		perror("raise() error");
-		exit(EXIT_FAILURE);
+		cout<<"Child's Process=> PID: "<<getpid()<<endl;
+		cout<<"Child's Parent ID: "<<getppid()<<endl;
+		for(;;);
 	}
-	char *str1, str2[20];
-	cin>>str2;
-	char *str3 = NULL;
-	str1 = new char[strlen(str2)+1];
-	mystrcat(str1, str3);
+	else
+	{
+		signal(SIGCHLD,func1);
 
-	cout<<"Str1: "<<str1<<endl;
-	cout<<"Str2: "<<str2<<endl;
+		waitpid(pid, &status, 0);
 
-	return EXIT_SUCCESS;
+		cout<<"Parent PID: "<<getpid()<<endl;
+		cout<<"Parent's Parent ID: "<<getppid()<<endl;
+		cout<<"Status: "<<status<<endl;
+	}
 
+	return (EXIT_SUCCESS);
 }
