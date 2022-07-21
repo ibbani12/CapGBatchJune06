@@ -1,37 +1,51 @@
 #include <iostream>
 #include<string>
 #include <cstring>
+#include <signal.h>
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <fstream>
+
+#include <time.h>
+
 
 using namespace std;
-
-class Container
+void func2(int signum)
 {
-	char pName[5];
-	char pType[4];
-	long pNum;
-public:
-	void setData(char pn[5], char pt[4], long pno)
-	{
-		strcpy(pName, pn);
-		strcpy(pType, pt);
-		pNum = pno;
-	}
+	cout<<"Interrupt: "<<signum<<endl;
+	exit(0);
+}
 
-	void disp(){
-		cout<<pName<<endl;
-		cout<<pType<<endl;
-		cout<<pNum<<endl;
-	}
-};
+void func1()
+{
+	cout<<"Hello WOrld PID:"<<getpid()<<endl;
+	
+	kill(getpid(),SIGUSR1);
+}
 
 int main()
 {
-	Container d[3];
+	signal(SIGCHLD,func2);
+	
+	if(fork()==0)
+	{
+		atexit(func1);
+		for(;;);
+	}
+	else
+	{
+		atexit(func1);
+		wait(0);
+		cout<<"Hey1"<<endl;
+		cout<<"Hey2"<<endl;
+		cout<<"Hey3"<<endl;
+		cout<<"Hey4"<<endl;
+		sleep(20);
 
-	string pn,pt,pno;
-	cin>>pn>>pt>>pno;
-	d[0].setData((char*)pn.c_str(),(char*)pt.c_str(),stol(pno));
-	d[0].disp();
+	}
 
 	return 0;
 }
