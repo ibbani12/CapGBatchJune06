@@ -1,0 +1,41 @@
+shared mem = is a common mem which is shared betn one or more processes.
+
+- it is the faster IPC 
+
+- in applications that exchange large amt of data.
+
+steps:
+ 1. request for mem seg that can be shared amoung diff process.
+ 2. associate the part of that mem or even the whole mem with the address space of the calling function.
+
+
+ shmget() := used to create a mem seg
+
+ int shmget(key_t key, size_t size, int shmflg);
+
+ key=> unique key identifire,
+ size=> size of the shared mem seg. : 4096 byte 
+ shmflg=> perrmisssion
+
+
+shmat() := attchs mem seg to the process
+
+void* shmat(int shmid, const void *shmaddr, int shmflg);
+
+
+
+
+char *f()
+{
+	char *name  = NULL; => 2000
+	name = new char[20];
+	strcpy(name,"bhima");
+	return name;
+}
+
+main()
+{
+	
+	cout<<f()<<endl;
+
+}
