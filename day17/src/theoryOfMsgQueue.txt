@@ -1,0 +1,37 @@
+Process A ===============>1,2,3,4,5,6,7...=============> Process B
+           msg send                        recv msg
+
+
+
+1. int msgget(key_t key, int msgflg) = > creats msg with id if success else negative no on error
+
+2. int msgsnd(int msgid, const void *msg_ptr, size_t msg_sz, int msgflg);
+
+   a. msgid := unique identifire of the msg queue which is returned from msgget
+
+   b. msg_ptr := ptr to the msg to be sent., which must start with a 
+   long int msg type
+
+   c. msg_sz := defines the size of the msg, it must not include the 
+   long int msg type. 
+
+   d. msgflg := if the msg queue is full or the sys limit on queued msg is reached. the function msgsnd will return 0 and place a copy of msg data on the msg que, on failure it will return -1
+
+
+   struct myMsg{
+   		long int msg_type;
+   		/* data you want to send/transfer */
+   };  
+
+
+
+3. msgrcv(int msgid, void *msg_ptr, size_t msg_sz, long int msgtype, int msgflg);
+
+
+4. msgctl() := IPC_STAT - it sets the data in msgid_ds structure to reflect the values associated with the msg que.
+
+IPC_SET: if the permission of the process is set, then it will associate
+
+IPC_RMID: it will remove the id from ipc table/ from msg que.
+
+ftok to gen.. unique key for msg que
