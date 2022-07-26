@@ -26,12 +26,13 @@ int main()
 	cout<<"Size: "<<sizeof(arr)<<endl;
 	//arr = new int[20];
 	arr = (int *)shmat(shmid, (void *)0, 0);
-
-	for(int i=1;;i++){
+	int i=1;
+	for(;;){
 		if(counter >= SIZE)
 			break;
 		if(i%2 == 0)
 			arr[counter++] = i;
+	i++;
 	}
 
 	cout<<"\nThe array content are\n";

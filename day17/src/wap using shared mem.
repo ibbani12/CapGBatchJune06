@@ -3,3 +3,18 @@ wap using shared mem.
 2. from process p2 write even numbers 2 4 6 8 10 ....
 3. from process p3 read the shared mem and print all even and odd numbers merged in an array , that will give the out put as 
 ex: 1 2 3 4 5 6 7 8 9 10.....
+
+
+
+./myexecutable mycmd sysPrg1.cpp newFile.cpp
+
+./mycmd sysPrg1.cpp newFile.cpp
+
+f1=> sysPrg1.cpp = read mode
+f2=> newFile.cpp = write mode
+
+size_t sendfile_copy(f2, f1, 0, 1024)
+{
+	//sendfile(f2, f1, 0, 1024) or implement the sendfile function
+}
+

@@ -22,8 +22,14 @@ shmat() := attchs mem seg to the process
 
 void* shmat(int shmid, const void *shmaddr, int shmflg);
 
+shmdt() -> deatch the shared mem from the process
+
+shmctl() ->
+
+shmctl(shmid, IPC_RMID, NULL);
 
 
+/*
 
 char *f()
 {
@@ -39,3 +45,4 @@ main()
 	cout<<f()<<endl;
 
 }
+*/
