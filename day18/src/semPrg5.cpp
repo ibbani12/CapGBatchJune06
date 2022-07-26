@@ -10,14 +10,17 @@ using namespace std;
 int main()
 {
 	int semid, retVal;
-	ushort val[6] = {1,2,3,4,5,6};
-	ushort val2[6];
-	semid = semget(0x26, 6, 0666|IPC_CREAT);
-	semctl(semid, 0, SETALL, val);
+	ushort val1[] = {1,3,5,7};
+	ushort val2[] = {2,4,6,8};
+	ushort val3[8];
+	semid = semget(0x38, 10, 0666|IPC_CREAT);
+	 semctl(semid, 0, SETALL, val1);
+	 semctl(semid, 1, SETALL, val2);
+
+	semctl(semid, 0, GETALL, val3);
 	
-	semctl(semid, 0, GETALL, val2);
-	for(int i=0;i<6;i++)
-		cout<<" "<<val2[i];
+	for(int i=0;i<8;i++)
+		cout<<" "<<val3[i];
 	cout<<endl;
 	
 	return (EXIT_SUCCESS);
