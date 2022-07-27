@@ -2,7 +2,7 @@
 
 int main()
 {
-	int semid, pid;
+	int semid, pid,val;
 	struct sembuf sop;
 	semid = semget(0x20,1,IPC_CREAT|0666);
 	pid = fork();
@@ -11,7 +11,7 @@ int main()
 		sleep(2);
 		cout<<"\nChild before semop"<<endl;
 		sop.sem_num = 0;
-		sop.sem_op = 0;
+		sop.sem_op = 1;
 		sop.sem_flg = 0;
 		semop(semid, &sop, 1);
 		cout<<"Child terminates"<<endl;
@@ -23,7 +23,8 @@ int main()
 		cout<<"Parent sleeping"<<endl;
 		sleep(5);
 		cout<<"Parent before 2nd semctl operation"<<endl;
-		//semctl(semid,0,SETVAL,0);
+		val = semctl(semid,0,GETVAL,0);
+		cout<<"Semaphore value : "<<val<<endl;
 		cout<<"Parent terminates"<<endl;
 
 	}
