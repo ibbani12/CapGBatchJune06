@@ -1,0 +1,16 @@
+/*
+int semop(int semid, struct sembuf semoarray[], size_t nops);
+
+-> an array of operations on a semaphore set.
+
+semoarry -> ptr to an array of semaphores operation
+struct sembuf
+{
+	ushort sem_num; // member number in set (0,1,---- nsems-1)
+	short sem_op; // operation (negative, 0 or +ve)
+	short sem_flg; // IPC_NOWAIT, SEM_UNDO	
+};
+
+nops -> the number of operations in the array
+
+*/
