@@ -11,8 +11,8 @@ int main()
 		sleep(2);
 		cout<<"\nChild before semop"<<endl;
 		sop.sem_num = 0;
-		sop.sem_op = 1;
-		sop.sem_flg = 0;
+		sop.sem_op = -3;
+		sop.sem_flg = IPC_NOWAIT;
 		semop(semid, &sop, 1);
 		cout<<"Child terminates"<<endl;
 	}

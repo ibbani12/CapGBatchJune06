@@ -10,3 +10,10 @@
 #include <sys/msg.h>
 
 using namespace std;
+
+
+union semun{
+	int val;              // used for SETVAL only
+	struct semid_ds *buf; // used for IPC_STAT and IPC_SET
+	ushort *array;        // used for GETALL and SETALL
+};
